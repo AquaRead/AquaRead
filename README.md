@@ -1,4 +1,4 @@
-### Hi there 👋
+### Aqua Read Aplha Build
 
 <!--
 **AquaRead/AquaRead** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
