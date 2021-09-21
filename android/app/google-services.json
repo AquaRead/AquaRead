@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "70777525482",
+    "project_id": "aquaread-c2f20",
+    "storage_bucket": "aquaread-c2f20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:70777525482:android:b7b342a632792ce2b1f393",
+        "android_client_info": {
+          "package_name": "com.aquaread.my_home"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "70777525482-03kjbntg5gen942kqqpceb7cgsrpb95e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQFnt76UGfHIyvxMLevFMtkRoi4XI_fHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "70777525482-03kjbntg5gen942kqqpceb7cgsrpb95e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
