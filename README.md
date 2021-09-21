@@ -1,4 +1,4 @@
-# my_aqua
+# AquaRead Aplha Build
 
 A new Flutter project.
 
