@@ -1,10 +1,8 @@
 # AquaRead Aplha Build
 
-A new Flutter project.
+This Flutter Project is intended for Floridablanca Water Distric Conncessionaire
 
 ## Getting Started
-
-This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
