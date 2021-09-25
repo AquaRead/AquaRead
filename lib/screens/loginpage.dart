@@ -17,44 +17,43 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   //form key
   final _formKey = GlobalKey<FormState>();
-
+  String errorMessage = '';
   //editing Controller
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final RoundedLoadingButtonController _btnController =
-        RoundedLoadingButtonController();
-
+    String _email;
+    String _password;
     void _doSomething() async {
-      Timer(Duration(seconds: 3), () async {
-        _btnController.success();
-        if (_formKey.currentState!.validate()) {
-          // If the form is valid, display a snackbar. In the real world,
-          // you'd often call a server or save the information in a database.
+      Timer(const Duration(seconds: 3), () async {
+        try {
+          if (_formKey.currentState!.validate()) {
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
+            setState(() {});
 
-          // Find the Scaffold in the widget tree and use
-          // it to show a SnackBar.
-
-          await FirebaseAuth.instance.signInWithEmailAndPassword(
-              email: emailController.text, password: passwordController.text);
-          setState(() {});
-
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HomePage()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+            errorMessage = '';
+          }
+        } on FirebaseAuthException catch (error) {
+          errorMessage = error.message!;
         }
       });
     }
 
     //email field
     final emailField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (formEmail) {},
         autofocus: false,
         controller: emailController,
         keyboardType: TextInputType.emailAddress,
         //validator: (){},
-        onSaved: (value) {
-          emailController.text = value!;
+        onSaved: (formEmail) {
+          emailController.text = formEmail!;
         },
         textInputAction: TextInputAction.next,
         decoration: InputDecoration(
@@ -85,12 +84,28 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ));
 
-    final LoginButton = RoundedLoadingButton(
-      child: Text('LogIn', style: TextStyle(color: Colors.white)),
-      onPressed: _doSomething,
-      controller: _btnController,
+    final LoginButton = MaterialButton(
+      child: const Text('LogIn', style: TextStyle(color: Colors.white)),
+      onPressed: () async {
+        if (_formKey.currentState!.validate()) {
+          try {
+            await FirebaseAuth.instance.signInWithEmailAndPassword(
+                email: emailController.text, password: passwordController.text);
+            setState(() {});
+
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+            errorMessage = '';
+          } on FirebaseAuthException catch (error) {
+            errorMessage = error.message!;
+          }
+        }
+      },
       elevation: 5,
       color: Colors.blueAccent,
+    );
+    Center(
+      child: Text(errorMessage),
     );
     return Scaffold(
       backgroundColor: Colors.white,
@@ -147,4 +162,14 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+}
+
+String? validateLoginEmail(String? formEmail) {
+  if (formEmail == null || formEmail.isEmpty) {
+    return "Enter Email Address";
+  }
+  String pattern = r'\w+@\w+\.\w+';
+  RegExp regex = RegExp(pattern);
+  if (!regex.hasMatch(formEmail)) return 'Invalid E-mail Address format.';
+  return null;
 }

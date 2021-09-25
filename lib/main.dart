@@ -4,6 +4,7 @@ import 'package:my_aqua/screens/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:my_aqua/screens/splashpage.dart';
+import 'package:my_aqua/screens/splashpage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

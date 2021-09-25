@@ -19,6 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   //our form key
   final _formKey = GlobalKey<FormState>();
 
+  var confirmPass;
+
   //editing Controller
   final accountNumberEditingController = new TextEditingController();
   final fullNameEditingController = new TextEditingController();
@@ -64,6 +66,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //Account Number field
     final accountNumberField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validateAccountNumber,
         autofocus: false,
         controller: accountNumberEditingController,
@@ -84,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //Fullname field
     final fullNameField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validateFullName,
         autofocus: false,
         controller: fullNameEditingController,
@@ -104,6 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //Address field
     final addressField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validateAdressField,
         autofocus: false,
         controller: addressEditingController,
@@ -123,6 +128,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ));
 
     final emailField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validateEmail,
         autofocus: false,
         controller: emailEditingController,
@@ -143,6 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //phone number field
     final phoneNumberField = TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
         validator: validatephoneNumberField,
         autofocus: false,
         controller: phoneNumberEditingController,
@@ -163,7 +170,23 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //Password field
     final passwordField = TextFormField(
-        validator: validatePassword,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (String? value) {
+          confirmPass = value;
+          String pattern =
+              r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$';
+          RegExp regex = RegExp(pattern);
+          if (value!.isEmpty) {
+            return "Please Enter Password";
+          } else if (!regex.hasMatch(value)) {
+            return '''
+      Password must be at least 8 characters,
+      include an uppercase letter, number and symbol.
+      ''';
+          } else {
+            return null;
+          }
+        },
         autofocus: false,
         controller: passwordEditingController,
         obscureText: true,
@@ -183,7 +206,18 @@ class _RegisterPageState extends State<RegisterPage> {
 
     //reTypePassword field
     final reTypePasswordField = TextFormField(
-        validator: validateRepeatPassword,
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        validator: (String? value) {
+          if (value!.isEmpty) {
+            return "Please Re-Enter New Password";
+          } else if (value.length < 8) {
+            return "Password must be atleast 8 characters long";
+          } else if (value != confirmPass) {
+            return "Password must be same as above";
+          } else {
+            return null;
+          }
+        },
         autofocus: false,
         controller: reTypePasswordEditingController,
         obscureText: true,
@@ -202,7 +236,7 @@ class _RegisterPageState extends State<RegisterPage> {
         ));
     //signup button
     final signInButton = RoundedLoadingButton(
-      child: Text('Tap me!', style: TextStyle(color: Colors.white)),
+      child: Text('Register', style: TextStyle(color: Colors.white)),
       onPressed: _doSomething,
       controller: _btnController,
       elevation: 5,
@@ -265,21 +299,21 @@ class _RegisterPageState extends State<RegisterPage> {
 
 String? validateAccountNumber(String? formAccountNumber) {
   if (formAccountNumber == null || formAccountNumber.isEmpty) {
-    return "Enter Email Address";
+    return "Enter Valid Account";
   }
   return null;
 }
 
 String? validateFullName(String? formFullName) {
   if (formFullName == null || formFullName.isEmpty) {
-    return "Enter Email Address";
+    return "Enter Fullname";
   }
   return null;
 }
 
 String? validateAdressField(String? formAddressField) {
   if (formAddressField == null || formAddressField.isEmpty) {
-    return "Enter Email Address";
+    return "Enter Address";
   }
   return null;
 }
@@ -296,22 +330,7 @@ String? validateEmail(String? formEmail) {
 
 String? validatephoneNumberField(String? formphoneNumberField) {
   if (formphoneNumberField == null || formphoneNumberField.isEmpty) {
-    return "Enter Email Address";
-  }
-  return null;
-}
-
-String? validatePassword(String? formPassword) {
-  if (formPassword == null || formPassword.isEmpty) {
-    return 'Password is required.';
-  }
-
-  return null;
-}
-
-String? validateRepeatPassword(String? formRepeatPassword) {
-  if (formRepeatPassword == null || formRepeatPassword.isEmpty) {
-    return "Enter Email Address";
+    return "Enter Phone Number";
   }
   return null;
 }
