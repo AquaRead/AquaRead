@@ -43,7 +43,7 @@ class _RegisterPageState extends State<RegisterPage> {
           // you'd often call a server or save the information in a database.
           final snackBar = SnackBar(
             behavior: SnackBarBehavior.floating,
-            content: Text('Creating Account!!!!!!!!1'),
+            content: Text('Creating Account!!!!!!!!!!'),
           );
 
           // Find the Scaffold in the widget tree and use
