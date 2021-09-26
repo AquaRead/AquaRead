@@ -35,7 +35,7 @@ class account extends StatelessWidget {
                 height: 5.0,
               ),
               const Text(
-                "Jett Aldine P. Melendressss",
+                "Aldrin M. Vega",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.w800,
