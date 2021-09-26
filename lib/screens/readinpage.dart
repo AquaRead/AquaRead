@@ -1,44 +1,108 @@
-/*import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:dropdown_formfield/dropdown_formfield.dart';
 
-class Reading extends StatefulWidget {
-  
+class ReadingPage extends StatefulWidget {
+  const ReadingPage({Key? key}) : super(key: key);
 
   @override
-  _ReadingState createState() => _ReadingState();
+  _ReadingPageState createState() => _ReadingPageState();
 }
 
-class _ReadingState extends State<Reading> {
-  String dropdownValue = 'Option 1';
+class _ReadingPageState extends State<ReadingPage> {
+  late String _myActivity;
+  late String _myActivityResult;
+  final formKey = new GlobalKey<FormState>();
+  @override
+  void initState() {
+    super.initState();
+    _myActivity = '';
+    _myActivityResult = '';
+  }
+
+  _saveForm() {
+    var form = formKey.currentState;
+    if (form!.validate()) {
+      form.save();
+      setState(() {
+        _myActivityResult = _myActivity;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(20),
-        child: Center(
-          child: DropdownButton(
-           value: dropdownValue,
-            items: <DropdownMenuItem>[
-              DropdownMenuItem(
-                value: "option 1",
-                child: Text("Option 1")
+      body: Center(
+        child: Form(
+          key: formKey,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(16),
+                child: DropdownFormField(
+                  titleText: "My Work Out",
+                  hintText: "Please Choose 1",
+                  value: _myActivity,
+                  onSaved: (value) {
+                    setState(() {
+                      _myActivity = value;
+                    });
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      _myActivity = value;
+                    });
+                  },
+                  dataSource: [
+                    {
+                      "display": "Running",
+                      "value": "Running",
+                    },
+                    {
+                      "display": "Climbing",
+                      "value": "Climbing",
+                    },
+                    {
+                      "display": "Walking",
+                      "value": "Walking",
+                    },
+                    {
+                      "display": "Swimming",
+                      "value": "Swimming",
+                    },
+                    {
+                      "display": "Soccer Practice",
+                      "value": "Soccer Practice",
+                    },
+                    {
+                      "display": "Baseball Practice",
+                      "value": "Baseball Practice",
+                    },
+                    {
+                      "display": "Football Practice",
+                      "value": "Football Practice",
+                    },
+                  ],
+                  textField: 'display',
+                  valueField: 'value',
                 ),
-                DropdownMenuItem(
-              value: 'Option 2',
-              child: Text('Option 2'),
-            ),
+              ),
+              Container(
+                padding: EdgeInsets.all(8),
+                child: RaisedButton(
+                  child: Text('Save'),
+                  onPressed: _saveForm,
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.all(16),
+                child: Text(_myActivityResult),
+              )
             ],
-            onChanged: (value) {
-            setState(() {
-              dropdownValue = value;
-            });
-          },
-            
           ),
         ),
       ),
     );
   }
-  
-
 }
-*/
