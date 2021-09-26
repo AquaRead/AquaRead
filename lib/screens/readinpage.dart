@@ -39,8 +39,8 @@ class _ReadingPageState extends State<ReadingPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(16),
-                child: DropdownFormField(
+                padding: const EdgeInsets.all(16),
+                child: DropDownFormField(
                   titleText: "My Work Out",
                   hintText: "Please Choose 1",
                   value: _myActivity,
@@ -54,7 +54,7 @@ class _ReadingPageState extends State<ReadingPage> {
                       _myActivity = value;
                     });
                   },
-                  dataSource: [
+                  dataSource: const [
                     {
                       "display": "Running",
                       "value": "Running",
