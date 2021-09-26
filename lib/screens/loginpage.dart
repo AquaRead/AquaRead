@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.mail),
           contentPadding: EdgeInsets.fromLTRB(20, 15, 20, 15),
-          hintText: "Emailssss",
+          hintText: "Email",
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
           ),

@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Center(
                               child: Text(
-                                'Current Billssssss',
+                                'Current Bills',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20,
