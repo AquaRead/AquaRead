@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:my_aqua/screens/account.dart';
+import 'package:my_aqua/screens/homapage.dart';
 import 'package:my_aqua/screens/loginpage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_aqua/screens/readinpage.dart';
 import 'package:my_aqua/screens/splashpage.dart';
 import 'package:my_aqua/screens/splashpage.dart';
+import 'package:my_aqua/screens/testreadingpage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

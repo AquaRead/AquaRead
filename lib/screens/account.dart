@@ -7,7 +7,7 @@ class account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -54,57 +54,116 @@ class account extends StatelessWidget {
               Container(
                 child: Center(
                   child: Padding(
-                    padding: EdgeInsets.only(top: 20, left: 10),
+                    padding: EdgeInsets.only(top: 20),
                     child: Container(
                       child: Column(
                         children: [
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
+                          ),
                           Row(
                             children: const <Widget>[
                               Expanded(
-                                child:
-                                    Text('Email', textAlign: TextAlign.start),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text('Email',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)),
+                                ),
                               ),
                               Spacer(),
                               Expanded(
                                 child: Text('Jetty@gmail.com',
-                                    textAlign: TextAlign.center),
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
                               ),
                             ],
+                          ),
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
                           ),
                           Padding(padding: EdgeInsets.only(top: 10.0)),
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
+                          ),
                           Row(
                             children: const <Widget>[
                               Expanded(
-                                child:
-                                    Text('Email', textAlign: TextAlign.start),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text('Address',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)),
+                                ),
                               ),
                               Spacer(),
                               Expanded(
-                                child: Text('Jetty@gmail.com',
-                                    textAlign: TextAlign.center),
+                                child: Text('San Bartolome',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
                               ),
                             ],
+                          ),
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
                           ),
                           Padding(padding: EdgeInsets.only(top: 10.0)),
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
+                          ),
                           Row(
                             children: const <Widget>[
                               Expanded(
-                                child:
-                                    Text('Email', textAlign: TextAlign.start),
+                                child: Padding(
+                                  padding: EdgeInsets.only(left: 10),
+                                  child: Text('Phone Number',
+                                      textAlign: TextAlign.start,
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold)),
+                                ),
                               ),
                               Spacer(),
                               Expanded(
-                                child: Text('Jetty@gmail.com',
-                                    textAlign: TextAlign.center),
+                                child: Text('09222222222',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold)),
                               ),
                             ],
                           ),
+                          Divider(
+                            thickness: 3,
+                            color: Colors.grey[400],
+                          ),
+                          Container(
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: OutlinedButton(
+                                  onPressed: () {},
+                                  child: const Text("Log Out")),
+                            ),
+                          )
                         ],
                       ),
                     ),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -129,8 +188,9 @@ class account extends StatelessWidget {
         ),
       ),
       floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+          FloatingActionButton(child: Icon(Icons.paid), onPressed: () {}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+    return scaffold;
   }
 }

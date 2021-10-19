@@ -1,7 +1,9 @@
-// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:my_aqua/payment_service.dart';
 import 'package:my_aqua/screens/account.dart';
+import 'package:stripe_payment/stripe_payment.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,10 +13,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  PaymentMethod? paymentMethod;
   int currentTab = 0;
 
   get child => null;
   @override
+  void initState() {
+    super.initState();
+    PaymentService.init();
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -61,6 +69,21 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
+                      Center(
+                          child: ButtonBar(
+                        alignment: MainAxisAlignment.center,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () async {
+                              paymentMethod =
+                                  await PaymentService().createPaymentMethod();
+                              print(paymentMethod!.id);
+                            },
+                            child: Text('Add Payment Method'),
+                          ),
+                          SizedBox(height: 52.0),
+                        ],
+                      ))
                     ],
                   ),
                 ),
@@ -166,7 +189,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+          FloatingActionButton(child: Icon(Icons.paid), onPressed: () async {}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
