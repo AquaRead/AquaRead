@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:my_aqua/screens/account.dart';
 import 'package:my_aqua/screens/homapage.dart';
 import 'package:my_aqua/screens/loginpage.dart';
@@ -11,6 +12,8 @@ import 'package:my_aqua/screens/splashpage.dart';
 import 'package:my_aqua/screens/testreadingpage.dart';
 
 void main() async {
+  Stripe.publishableKey =
+      'pk_test_51JlpnmAIjSj6oSFjf927QKB7ji1O4IkCzl5tDkXBUbQ7KKKMFSjGXlUT2XEZ7QjAtBjHfqSSW6Aew6akwlUgyRsr006sUT3hN3';
   WidgetsFlutterBinding.ensureInitialized();
 
   //TODO: Handle error for Firebase.initializeApp

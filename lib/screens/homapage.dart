@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors, avoid_print
-
+import 'package:external_app_launcher/external_app_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:my_aqua/payment_service.dart';
 import 'package:my_aqua/screens/account.dart';
-import 'package:stripe_payment/stripe_payment.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,16 +11,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  PaymentMethod? paymentMethod;
   int currentTab = 0;
 
   get child => null;
   @override
-  void initState() {
-    super.initState();
-    PaymentService.init();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -75,11 +67,11 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           ElevatedButton(
                             onPressed: () async {
-                              paymentMethod =
-                                  await PaymentService().createPaymentMethod();
-                              print(paymentMethod!.id);
+                              await LaunchApp.openApp(
+                                  androidPackageName: 'com.globe.gcash.android',
+                                  openStore: true);
                             },
-                            child: Text('Add Payment Method'),
+                            child: Text('Pay  BIlls'),
                           ),
                           SizedBox(height: 52.0),
                         ],

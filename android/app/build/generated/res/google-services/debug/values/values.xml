@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">70777525482-03kjbntg5gen942kqqpceb7cgsrpb95e.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">70777525482</string>
+    <string name="google_api_key" translatable="false">AIzaSyBQFnt76UGfHIyvxMLevFMtkRoi4XI_fHM</string>
+    <string name="google_app_id" translatable="false">1:70777525482:android:b7b342a632792ce2b1f393</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBQFnt76UGfHIyvxMLevFMtkRoi4XI_fHM</string>
+    <string name="google_storage_bucket" translatable="false">aquaread-c2f20.appspot.com</string>
+    <string name="project_id" translatable="false">aquaread-c2f20</string>
+</resources>
