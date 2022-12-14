@@ -1,4 +1,4 @@
-# AquaRead Aplha Build
+# AquaRead Alpha Build
 
 This Flutter Project is intended for Floridablanca Water Distric Conncessionaire
 
